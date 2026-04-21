@@ -1,0 +1,55 @@
+<div class="dialog-header">
+  <h2>User Records</h2>
+  <button mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+</div>
+
+<div class="table-container">
+
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Second Name</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Occupation</th>
+        <th>Experience</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>DOB</th>
+        <th>Skills</th>
+        <th>Country</th>
+        <th>State</th>
+        <th>Salary</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.secondName }}</td>
+        <td>
+          <span class="badge">{{ user.gender }}</span>
+        </td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.occupation }}</td>
+        <td>{{ user.experience }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.dob }}</td>
+        <td>{{ user.skills?.join(', ') }}</td>
+        <td>{{ user.country }}</td>
+        <td>{{ user.state }}</td>
+        <td>₹{{ user.salary }}</td>
+        <td>
+          <span class="status">{{ user.maritalStatus }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
