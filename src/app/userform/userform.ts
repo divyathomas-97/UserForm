@@ -44,8 +44,6 @@ export class Userform {
   userForm: FormGroup;
   users: any[] = [];
 
-
-
   constructor(private fb: FormBuilder, private dialog: MatDialog) {
     this.userForm = this.fb.group({
       firstName: ['', Validators.required],
