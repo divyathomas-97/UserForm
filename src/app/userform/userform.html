@@ -1,0 +1,166 @@
+<div class="container">
+
+  <h1>User Form</h1>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form">
+
+    <!-- Row 1 -->
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName">
+        <mat-error *ngIf="f['firstName'].touched && f['firstName'].hasError('required')">
+          Required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Second Name</mat-label>
+        <input matInput formControlName="secondName">
+        <mat-error *ngIf="f['secondName'].touched && f['secondName'].hasError('required')">
+          Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="Male">Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+          <mat-option value="Other">Other</mat-option>
+        </mat-select>
+        <mat-error *ngIf="f['gender'].touched && f['gender'].hasError('required')">
+          Required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <textarea matInput formControlName="address"></textarea>
+        <mat-error *ngIf="f['address'].touched && f['address'].hasError('required')">
+          Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Occupation</mat-label>
+        <input matInput formControlName="occupation">
+        <mat-error *ngIf="f['occupation'].touched && f['occupation'].hasError('required')">
+          Required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Experience</mat-label>
+        <input matInput type="number" formControlName="experience">
+        <mat-error *ngIf="f['experience'].hasError('required')">
+          Required
+        </mat-error>
+        <mat-error *ngIf="f['experience'].hasError('min')">
+          Cannot be negative
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="f['email'].hasError('email')">Invalid email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+        <mat-error *ngIf="f['phone'].hasError('invalidPhone')">
+          Invalid phone number
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput type="date" formControlName="dob">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Salary</mat-label>
+        <input matInput type="number" formControlName="salary">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Skills</mat-label>
+        <mat-select formControlName="skills" multiple>
+          <mat-option value="Angular">Angular</mat-option>
+          <mat-option value="React">React</mat-option>
+          <mat-option value="Java">Java</mat-option>
+          <mat-option value="Python">Python</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country">
+          <mat-option value="India">India</mat-option>
+          <mat-option value="USA">USA</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Preferred Time</mat-label>
+        <input matInput type="time" formControlName="preferredTime">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <label>Marital Status:</label>
+      <mat-radio-group formControlName="maritalStatus">
+        <mat-radio-button value="Single">Single</mat-radio-button>
+        <mat-radio-button value="Married">Married</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+
+    <div class="row">
+      <input type="file" (change)="onFileChange($event)">
+    </div>
+
+
+
+
+    <!-- Actions -->
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">
+        Submit
+      </button>
+
+      <button mat-raised-button color="accent" type="button" (click)="userForm.reset()">
+        Reset
+      </button>
+
+      <button mat-icon-button color="primary" type="button" (click)="openDialog()" *ngIf="users.length">
+        <mat-icon>visibility</mat-icon>
+      </button>
+    </div>
+
+  </form>
+
+</div>
